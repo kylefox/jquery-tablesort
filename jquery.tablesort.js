@@ -1,13 +1,5 @@
 $(function() {
 
-	function bm(f) {
-		var s = new Date(),
-			e;
-		f();
-		e = new Date();
-		return e.getTime() - s.getTime();
-	}
-
 	function debug(msg) {
 		if(console && console.log) {
 			console.log('[tablesort] ' + msg);
@@ -35,10 +27,16 @@ $(function() {
 	SortableTable.prototype = {
 
 		sort: function(th) {
-			var self = this,
+			var start = new Date(),
+				self = this,
 				table = this.$el,
 				rows = table.find('tbody tr'),
-				direction;
+				direction,
+				aRow,
+				bRow,
+				aIndex,
+				bIndex,
+				cache = [];
 
 			if(rows.length === 0)
 				return;
@@ -46,11 +44,31 @@ $(function() {
 			this.index = th.index();
 			this.direction = this.direction === 'asc' ? 'desc' : 'asc';
 			direction = this.direction == 'asc' ? 1 : -1;
+
 			debug("Sorting by " + this.index + ' ' + this.direction);
 
 			rows.sort(function(a, b) {
-				a = sortValueForCell(th, self.cellToSort(a), self);
-				b = sortValueForCell(th, self.cellToSort(b), self);
+				aRow = $(a);
+				bRow = $(b);
+				aIndex = aRow.index();
+				bIndex = bRow.index();
+
+				// Sort value A
+				if(cache[aIndex]) {
+					a = cache[aIndex];
+				} else {
+					a = sortValueForCell(th, self.cellToSort(a), self);
+					cache[aIndex] = a;
+				}
+
+				// Sort Value B
+				if(cache[bIndex]) {
+					b = cache[bIndex];
+				} else {
+					b = sortValueForCell(th, self.cellToSort(b), self);
+					cache[bIndex]= b;
+				}
+
 				if(a > b) {
 					return 1 * direction;
 				} else if(a < b) {
@@ -63,6 +81,8 @@ $(function() {
 			rows.each(function(i, tr) {
 				table.append(tr);
 			});
+
+			debug('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
 
 		},
 

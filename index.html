@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<table>
+<!-- <table>
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -54,7 +54,7 @@
 			<td>37</td>
 		</tr>
 	</tbody>
-</table>
+</table> -->
 
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -64,10 +64,19 @@
 	var sort;
 
 	$(function() {
+
+		var table = $('<table></table>');
+		table.append('<thead><tr><th class="number">Number</th></tr></thead>');
+		var tbody = $('<tbody></tbody>');
+		for(var i = 0; i<500; i++) {
+			tbody.append('<tr><td>' + Math.floor(Math.random() * 100) + '</td></tr>');
+		}
+		table.append(tbody);
+		$('body').append(table);
+
 		sort = $('table').tablesort().data('tablesort');
 
 		$('thead th.number').data('sortBy', function(th, td, sorter) {
-			console.log("sort by number!");
 			return parseInt(td.text(), 10);
 		});
 
