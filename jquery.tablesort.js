@@ -14,15 +14,15 @@ $(function() {
 		}
 	}
 
-	$.tablesort = function ($el, settings) {
+	$.tablesort = function ($table, settings) {
 		var self = this;
-		this.$el = $el;
+		this.$table = $table;
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
-		this.$el.find('thead th').bind('click.tablesort', function() {
+		this.$table.find('thead th').bind('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;
-		this.th = null;
+		this.$th = null;
 		this.direction = null;
 	};
 
@@ -31,7 +31,7 @@ $(function() {
 		sort: function(th) {
 			var start = new Date(),
 				self = this,
-				table = this.$el,
+				table = this.$table,
 				rows = table.find('tbody tr'),
 				direction,
 				aRow,
@@ -43,14 +43,14 @@ $(function() {
 			if(rows.length === 0)
 				return;
 
-			self.$el.find('thead th').removeClass(self.settings.asc + ' ' + self.settings.desc);
+			self.$table.find('thead th').removeClass(self.settings.asc + ' ' + self.settings.desc);
 
 			this.index = th.index();
-			this.th = th;
+			this.$th = th;
 			this.direction = this.direction === 'asc' ? 'desc' : 'asc';
 			direction = this.direction == 'asc' ? 1 : -1;
 
-			self.$el.trigger('tablesort:start', [self]);
+			self.$table.trigger('tablesort:start', [self]);
 			self.log("Sorting by " + this.index + ' ' + this.direction);
 
 			rows.sort(function(a, b) {
@@ -91,7 +91,7 @@ $(function() {
 			th.addClass(self.settings[self.direction]);
 
 			self.log('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
-			self.$el.trigger('tablesort:complete', [self]);
+			self.$table.trigger('tablesort:complete', [self]);
 
 		},
 
@@ -107,7 +107,7 @@ $(function() {
 		},
 
 		destroy: function() {
-			this.$el.find('thead th').unbind('click.tablesort');
+			this.$table.find('thead th').unbind('click.tablesort');
 			return null;
 		}
 
