@@ -1,5 +1,7 @@
 A tiny & dead-simple jQuery plugin for sortable tables.
 
+Here's a basic [demo](http://dl.dropbox.com/u/780754/tablesort/index.html).
+
 Install
 ---
 
