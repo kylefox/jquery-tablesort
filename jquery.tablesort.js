@@ -112,6 +112,7 @@ $(function() {
 
 		destroy: function() {
 			this.$table.find('thead th').unbind('click.tablesort');
+			this.$table.data('tablesort', null);
 			return null;
 		}
 
@@ -131,7 +132,7 @@ $(function() {
 			table = $(this);
 			previous = table.data('tablesort');
 			if(previous) {
-				table.data('tablesort', previous.destroy());
+				previous.destroy();
 			}
 			table.data('tablesort', new $.tablesort(table, settings));
 		});
