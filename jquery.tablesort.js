@@ -28,12 +28,11 @@ $(function() {
 
 	$.tablesort.prototype = {
 
-		sort: function(th) {
+		sort: function(th, direction) {
 			var start = new Date(),
 				self = this,
 				table = this.$table,
 				rows = table.find('tbody tr'),
-				direction,
 				aRow,
 				bRow,
 				aIndex,
@@ -47,7 +46,12 @@ $(function() {
 
 			this.index = th.index();
 			this.$th = th;
-			this.direction = this.direction === 'asc' ? 'desc' : 'asc';
+			
+			if(direction !== 'asc' && direction !== 'desc')
+				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
+			else
+				this.direction = direction;
+
 			direction = this.direction == 'asc' ? 1 : -1;
 
 			self.$table.trigger('tablesort:start', [self]);
