@@ -1,30 +1,32 @@
 $(function() {
 
-	function debug(msg) {
-		if(console && console.log) {
-			console.log('[tablesort] ' + msg);
-		}
-	}
+	var $ = window.jQuery;
 
 	function sortValueForCell(th, td, sorter) {
 		if(th.data().sortBy) {
 			var sortBy = th.data().sortBy;
 			return (typeof sortBy === 'function') ? sortBy(th, td, sorter) : sortBy;
 		}
-		return td.text();
+		if(td.data().sortValue) {
+			return td.data().sortValue;
+		} else {
+			return td.text();
+		}
 	}
 
-	function SortableTable($el) {
+	$.tablesort = function ($el, settings) {
 		var self = this;
 		this.$el = $el;
+		this.settings = $.extend({}, $.tablesort.defaults, settings);
 		this.$el.find('thead th').bind('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;
+		this.th = null;
 		this.direction = null;
-	}
+	};
 
-	SortableTable.prototype = {
+	$.tablesort.prototype = {
 
 		sort: function(th) {
 			var start = new Date(),
@@ -41,11 +43,15 @@ $(function() {
 			if(rows.length === 0)
 				return;
 
+			self.$el.find('thead th').removeClass(self.settings.asc + ' ' + self.settings.desc);
+
 			this.index = th.index();
+			this.th = th;
 			this.direction = this.direction === 'asc' ? 'desc' : 'asc';
 			direction = this.direction == 'asc' ? 1 : -1;
 
-			debug("Sorting by " + this.index + ' ' + this.direction);
+			self.$el.trigger('tablesort:start', [self]);
+			self.log("Sorting by " + this.index + ' ' + this.direction);
 
 			rows.sort(function(a, b) {
 				aRow = $(a);
@@ -82,21 +88,48 @@ $(function() {
 				table.append(tr);
 			});
 
-			debug('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
+			th.addClass(self.settings[self.direction]);
+
+			self.log('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
+			self.$el.trigger('tablesort:complete', [self]);
 
 		},
 
 		cellToSort: function(row) {
 			return $($(row).find('td').get(this.index));
+		},
+
+
+		log: function(msg) {
+			if(($.tablesort.DEBUG || this.settings.debug) && console && console.log) {
+				console.log('[tablesort] ' + msg);
+			}
+		},
+
+		destroy: function() {
+			this.$el.find('thead th').unbind('click.tablesort');
+			return null;
 		}
 
 	};
 
-	$.fn.tablesort = function() {
-		var table, sortable;
+	$.tablesort.DEBUG = false;
+
+	$.tablesort.defaults = {
+		debug: $.tablesort.DEBUG,
+		asc: 'sorted ascending',
+		desc: 'sorted descending'
+	};
+
+	$.fn.tablesort = function(settings) {
+		var table, sortable, previous;
 		return this.each(function() {
 			table = $(this);
-			table.data('tablesort', new SortableTable(table));
+			previous = table.data('tablesort');
+			if(previous) {
+				table.data('tablesort', previous.destroy());
+			}
+			table.data('tablesort', new $.tablesort(table, settings));
 		});
 	};
 

@@ -3,7 +3,7 @@
 	<title></title>
 	<style type="text/css">
 	body {
-		font: normal 18px/24px Georgia, serif;
+		font: normal 16px/24px Georgia, serif;
 	}
 	table {
 		font-size: 1em;
@@ -15,11 +15,22 @@
 		padding: 10px 30px 10px 15px;
 		text-align: left;
 	}
+	th.sorted {
+		background: #eee;
+	}
+
+	th.ascending:after {
+		content: "  \2191";
+	}
+
+	th.descending:after {
+		content: " \2193";
+	}
 	</style>
 </head>
 <body>
 
-<!-- <table>
+<table>
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -32,29 +43,29 @@
 		<tr>
 			<td>Thom Yorke</td>
 			<td>Radiohead</td>
-			<td>October 7, 1968</td>
+			<td data-sort-value="2">October 7, 1968</td>
 			<td>43</td>
 		</tr>
 		<tr>
 			<td>Justin Vernon</td>
 			<td>Bon Iver</td>
-			<td>April 30, 1981</td>
+			<td data-sort-value="4">April 30, 1981</td>
 			<td>30</td>
 		</tr>
 		<tr>
 			<td>Paul McCartney</td>
 			<td>The Beatles</td>
-			<td>June 18, 1942</td>
+			<td data-sort-value="1">June 18, 1942</td>
 			<td>69</td>
 		</tr>
 		<tr>
 			<td>Sam Beam</td>
 			<td>Iron &amp; Wine</td>
-			<td>July 26, 1974</td>
+			<td data-sort-value="3">July 26, 1974</td>
 			<td>37</td>
 		</tr>
 	</tbody>
-</table> -->
+</table>
 
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
