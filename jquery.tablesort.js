@@ -13,7 +13,7 @@ $(function() {
 			var sortBy = th.data().sortBy;
 			return (typeof sortBy === 'function') ? sortBy(th, td, sorter) : sortBy;
 		}
-		if(td.data().sortValue) {
+		if(td.data().sortValue !== undefined) {
 			return td.data().sortValue;
 		} else {
 			return td.text();
