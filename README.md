@@ -19,7 +19,14 @@ Call the appropriate method on the table you want to make sortable:
 
 The table will be sorted when the column headers are clicked.
 
-Your table must have `thead` and `tbody` elements, and should follow this general format:
+Your table should follow this general format:
+
+> Note: If you have access to the table markup, it's better to wrap your table rows
+in `<thead>` and `<tbody>` elements (see below), resulting in a slightly faster sort.
+>
+> If you can't use `<thead>`, the plugin will fall back by sorting all `<tr>` rows 
+that contain a `<td>` element using jQuery's `.has()` method (ie, the header row, 
+containing `<th>` elements, will remain at the top where it belongs).
 
 
 		<table>
