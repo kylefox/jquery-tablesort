@@ -63,6 +63,8 @@ At the moment cells are naively sorted using string comparison. By default, the 
 
 This allows you to sort your cells using your own criteria without having to write a custom sort function. It also keeps the plugin lightweight by not having to guess & parse dates.
 
+Currently, numbers pulled from a cell's `$.text()` return value are converted to numbers using `parseFloat()`.
+
 Defining custom sort functions
 ---
 
