@@ -23,8 +23,9 @@ $(function() {
 	$.tablesort = function ($table, settings) {
 		var self = this;
 		this.$table = $table;
+		this.$thead = this.$table.find('thead');
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
-		this.$table.find('thead th').bind('click.tablesort', function() {
+		this.$table.find('th').bind('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;
@@ -38,7 +39,7 @@ $(function() {
 			var start = new Date(),
 				self = this,
 				table = this.$table,
-				rows = table.find('tbody tr'),
+				rows = this.$thead.length > 0 ? table.find('tbody tr') : table.find('tr').has('td'),
 				aRow,
 				bRow,
 				aIndex,
@@ -48,7 +49,7 @@ $(function() {
 			if(rows.length === 0)
 				return;
 
-			self.$table.find('thead th').removeClass(self.settings.asc + ' ' + self.settings.desc);
+			self.$table.find('th').removeClass(self.settings.asc + ' ' + self.settings.desc);
 
 			this.index = th.index();
 			this.$th = th;
@@ -117,7 +118,7 @@ $(function() {
 		},
 
 		destroy: function() {
-			this.$table.find('thead th').unbind('click.tablesort');
+			this.$table.find('th').unbind('click.tablesort');
 			this.$table.data('tablesort', null);
 			return null;
 		}
