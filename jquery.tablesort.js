@@ -8,16 +8,31 @@ $(function() {
 
 	var $ = window.jQuery;
 
+	function stringToNumber(value) {
+		/**
+		 * Interesting facts about JavaScript:
+		 *
+		 * 1. NaN != NaN
+		 * 2. If you pass a string to parseFloat(), it returns NaN
+		 *
+		 * These facts can be exploited to convert string numbers into numbers.
+		 */
+		var floatValue = parseFloat(value);
+		return floatValue != floatValue ? value : floatValue;
+	}
+
 	function sortValueForCell(th, td, sorter) {
+		var value;
 		if(th.data().sortBy) {
 			var sortBy = th.data().sortBy;
 			return (typeof sortBy === 'function') ? sortBy(th, td, sorter) : sortBy;
 		}
 		if(td.data().sortValue) {
-			return td.data().sortValue;
+			value = td.data().sortValue;
 		} else {
-			return td.text();
+			value = td.text();
 		}
+		return stringToNumber(value);
 	}
 
 	$.tablesort = function ($table, settings) {
