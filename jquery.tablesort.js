@@ -95,7 +95,7 @@ $(function() {
 
 	};
 
-	$.tablesort.DEBUG = true;
+	$.tablesort.DEBUG = false;
 
 	$.tablesort.defaults = {
 		debug: $.tablesort.DEBUG,
