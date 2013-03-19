@@ -39,7 +39,7 @@ $(function() {
 			});
 			if (unsortedValues.length === 0) return;
 
-			self.$table.find('thead th').removeClass(self.settings.asc + ' ' + self.settings.desc);
+			self.$table.find('th').removeClass(self.settings.asc + ' ' + self.settings.desc);
 
 			if (direction !== 'asc' && direction !== 'desc')
 				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
