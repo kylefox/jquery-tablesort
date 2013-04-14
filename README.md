@@ -154,6 +154,8 @@ Contributing
 
 As always, all suggestions, bug reports/fixes, and improvements are welcome.
 
+Minify JavaScript with [Closure Compiler](http://closure-compiler.appspot.com/home) (default options)
+
 Help with any of the following is particularly appreciated:
 
 * Performance improvements
