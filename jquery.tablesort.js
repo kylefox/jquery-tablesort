@@ -35,7 +35,7 @@ $(function() {
 			var unsortedValues = cells.map(function(idx, cell) {
 				if (sortBy)
 					return (typeof sortBy === 'function') ? sortBy($(th), $(cell), self) : sortBy;
-				return $(this).data().sortValue || $(this).text();
+				return ($(this).data().sortValue != null ? $(this).data().sortValue : $(this).text());
 			});
 			if (unsortedValues.length === 0) return;
 
