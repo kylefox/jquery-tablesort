@@ -27,6 +27,7 @@ $(function() {
 			var start = new Date(),
 				self = this,
 				table = this.$table,
+				body = table.find('tbody').length > 0 ? table.find('tbody') : table,
 				rows = this.$thead.length > 0 ? table.find('tbody tr') : table.find('tr').has('td'),
 				cells = table.find('tr td:nth-of-type(' + (th.index() + 1) + ')'),
 				sortBy = th.data().sortBy,
@@ -72,7 +73,7 @@ $(function() {
 			});
 
 			$.each(sortedMap, function(i, entry) {
-				table.append(entry.row);
+				body.append(entry.row);
 			});
 
 			th.addClass(self.settings[self.direction]);
