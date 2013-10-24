@@ -6,7 +6,7 @@
 
 $(function() {
 
-	var $ = window.jQuery;
+	var $ = window.Zepto || window.jQuery;
 
 	$.tablesort = function ($table, settings) {
 		var self = this;
