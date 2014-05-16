@@ -13,8 +13,8 @@ $(function() {
 		this.$table = $table;
 		this.$thead = this.$table.find('thead');
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
-    this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th') : this.$table.find('th');
-    this.$sortCells.bind('click.tablesort', function() {
+		this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th') : this.$table.find('th');
+		this.$sortCells.bind('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;
@@ -40,7 +40,7 @@ $(function() {
 			});
 			if (unsortedValues.length === 0) return;
 
-      self.$sortCells.removeClass(self.settings.asc + ' ' + self.settings.desc);
+			self.$sortCells.removeClass(self.settings.asc + ' ' + self.settings.desc);
 
 			if (direction !== 'asc' && direction !== 'desc')
 				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
