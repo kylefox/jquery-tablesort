@@ -55,6 +55,7 @@ $(function() {
                         self.$table.css("display");
                         // Run sorting asynchronously on a timout to force browser redraw after
                         // `tablesort:start` callback. Also avoids locking up the browser too much.
+                        setTimeout(function() {
 				for (var i = 0, length = unsortedValues.length; i < length; i++)
 				{
 					sortedMap.push({
