@@ -51,34 +51,42 @@ $(function() {
 			self.$table.trigger('tablesort:start', [self]);
 			self.log("Sorting by " + this.index + ' ' + this.direction);
 
-			for (var i = 0, length = unsortedValues.length; i < length; i++)
-			{
-				sortedMap.push({
-					index: i,
-					cell: cells[i],
-					row: rows[i],
-					value: unsortedValues[i]
-				});
-			}
-
-			sortedMap.sort(function(a, b) {
-				if (a.value > b.value) {
-					return 1 * direction;
-				} else if (a.value < b.value) {
-					return -1 * direction;
-				} else {
-					return 0;
+                        // Try to force a browser redraw
+                        self.$table.css("display");
+                        // Run sorting asynchronously on a timout to force browser redraw after
+                        // `tablesort:start` callback. Also avoids locking up the browser too much.
+				for (var i = 0, length = unsortedValues.length; i < length; i++)
+				{
+					sortedMap.push({
+						index: i,
+						cell: cells[i],
+						row: rows[i],
+						value: unsortedValues[i]
+					});
 				}
-			});
-
-			$.each(sortedMap, function(i, entry) {
-				table.append(entry.row);
-			});
-
-			th.addClass(self.settings[self.direction]);
-
-			self.log('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
-			self.$table.trigger('tablesort:complete', [self]);
+	
+				sortedMap.sort(function(a, b) {
+					if (a.value > b.value) {
+						return 1 * direction;
+					} else if (a.value < b.value) {
+						return -1 * direction;
+					} else {
+						return 0;
+					}
+				});
+	
+				$.each(sortedMap, function(i, entry) {
+					table.append(entry.row);
+				});
+	
+				th.addClass(self.settings[self.direction]);
+	
+				self.log('Sort finished in ' + ((new Date()).getTime() - start.getTime()) + 'ms');
+				self.$table.trigger('tablesort:complete', [self]);
+                            	//Try to force a browser redraw
+                            	self.$table.css("display");                        
+                        }, 10);
+			
 		},
 
 		log: function(msg) {
