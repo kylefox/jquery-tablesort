@@ -1,7 +1,7 @@
 /*
 	A simple, lightweight jQuery plugin for creating sortable tables.
 	https://github.com/kylefox/jquery-tablesort
-	Version 0.0.2
+	Version 0.0.3
 */
 
 $(function() {
@@ -13,7 +13,7 @@ $(function() {
 		this.$table = $table;
 		this.$thead = this.$table.find('thead');
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
-		this.$table.find('th').bind('click.tablesort', function() {
+		this.$table.find('th:not(.no-sort)').bind('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;

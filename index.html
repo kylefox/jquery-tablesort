@@ -30,6 +30,12 @@
 		background: #d4d4d4;
 	}
 
+	th.no-sort,
+	th.no-sort:hover {
+		background: #f4f4f4;
+		cursor: not-allowed;
+	}
+
 	th.sorted.ascending:after {
 		content: "  \2191";
 	}
@@ -49,6 +55,7 @@
 				<th>Band</th>
 				<th>Date of Birth</th>
 				<th class="number">Age</th>
+				<th class="no-sort">Photo</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -57,24 +64,28 @@
 				<td>Radiohead</td>
 				<td data-sort-value="2">October 7, 1968</td>
 				<td>43</td>
+				<td><img src="http://place-hoff.com/100/100" width="50"></td>
 			</tr>
 			<tr>
 				<td>Justin Vernon</td>
 				<td>Bon Iver</td>
 				<td data-sort-value="4">April 30, 1981</td>
 				<td>30</td>
+				<th><img src="http://www.fillmurray.com/100/100" width="50"></td>
 			</tr>
 			<tr>
 				<td>Paul McCartney</td>
 				<td>The Beatles</td>
 				<td data-sort-value="1">June 18, 1942</td>
 				<td>69</td>
+				<td><img src="https://www.placecage.com/100/100" width="50"></td>
 			</tr>
 			<tr>
 				<td>Sam Beam</td>
 				<td>Iron &amp; Wine</td>
 				<td data-sort-value="3">July 26, 1974</td>
 				<td>37</td>
+				<td><img src="http://www.nicenicejpg.com/100" width="50"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -83,7 +94,7 @@
 <div class="example ex-2"></div>
 
 <script src="//code.jquery.com/jquery-latest.min.js"></script>
-<script src="jquery.tablesort.js"></script>
+<script src="jquery.tablesort.min.js"></script>
 <script type="text/javascript">
 
 	$(function() {

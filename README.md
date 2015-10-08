@@ -19,13 +19,17 @@ Call the appropriate method on the table you want to make sortable:
 
 The table will be sorted when the column headers are clicked.
 
+To prevent a column from being sortable, just add the `no-sort` class:
+
+	<th class="no-sort">Photo</th>
+
 Your table should follow this general format:
 
 > Note: If you have access to the table markup, it's better to wrap your table rows
 in `<thead>` and `<tbody>` elements (see below), resulting in a slightly faster sort.
 >
-> If you can't use `<thead>`, the plugin will fall back by sorting all `<tr>` rows 
-that contain a `<td>` element using jQuery's `.has()` method (ie, the header row, 
+> If you can't use `<thead>`, the plugin will fall back by sorting all `<tr>` rows
+that contain a `<td>` element using jQuery's `.has()` method (ie, the header row,
 containing `<th>` elements, will remain at the top where it belongs).
 
 
@@ -108,7 +112,7 @@ tablesort instances
 ---
 
 A table's tablesort instance can be retrieved by querying the data object:
-	
+
 	$('table').tablesort(); // Make the table sortable.
 	var tablesort = $('table').data('tablesort'); // Get a reference to it's tablesort instance
 
@@ -142,12 +146,6 @@ Here are the supported options and their default values:
 You can also change the global debug value which overrides the instance's settings:
 
 	$.tablesort.DEBUG = false;
-
-Todos
----
-
-* Guess common datatypes (dates, numbers, etc)
-* Multi-column sorting
 
 Contributing
 ---
