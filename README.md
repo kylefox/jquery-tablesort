@@ -10,6 +10,8 @@ Just add jQuery & the tablesort plugin to your page:
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="jquery.tablesort.js"></script>
 
+(The plugin is also compatible with [Zepto.js](https://github.com/madrobby/zepto)).
+
 Basic use
 ---
 
