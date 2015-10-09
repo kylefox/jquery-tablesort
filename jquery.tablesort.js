@@ -1,7 +1,7 @@
 /*
 	A simple, lightweight jQuery plugin for creating sortable tables.
 	https://github.com/kylefox/jquery-tablesort
-	Version 0.0.4 - modified by kelesi (compatibility with floatThead and forcing redraw after tablesort:start trigger)
+	Version 0.0.4 - modified by kelesi (compatibility with floatThead and forcing redraw after tablesort:start trigger) - removed flicker
 */
 
 $(function() {
@@ -41,8 +41,6 @@ $(function() {
 			});
 			if (unsortedValues.length === 0) return;
 
-			self.$sortCells.removeClass(self.settings.asc + ' ' + self.settings.desc);
-
 			if (direction !== 'asc' && direction !== 'desc')
 				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
 			else
@@ -58,6 +56,7 @@ $(function() {
 			// Run sorting asynchronously on a timeout to force browser redraw after
 			// `tablesort:start` callback. Also avoids locking up the browser too much.
 			setTimeout(function() {
+				self.$sortCells.removeClass(self.settings.asc + ' ' + self.settings.desc);
 				for (var i = 0, length = unsortedValues.length; i < length; i++)
 				{
 					sortedMap.push({
