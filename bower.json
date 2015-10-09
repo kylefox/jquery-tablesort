@@ -1,6 +1,6 @@
 {
   "name": "jquery-tablesort",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/kylefox/jquery-tablesort",
   "authors": [
     "Kyle Fox <kylefox@gmail.com>"
@@ -15,5 +15,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "1.8.0 - 2.1.x"
+  }
 }
