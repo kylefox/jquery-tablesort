@@ -1,7 +1,7 @@
 /*
 	A simple, lightweight jQuery plugin for creating sortable tables.
 	https://github.com/kylefox/jquery-tablesort
-	Version 0.0.4 - modified by kelesi (compatibility with floatThead and forcing redraw after tablesort:start trigger) - removed flicker
+	Version 0.0.4
 */
 
 $(function() {
@@ -14,7 +14,7 @@ $(function() {
 		this.$thead = this.$table.find('thead');
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
 		this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)') : this.$table.find('th:not(.no-sort)');
-		this.$sortCells.bind('click.tablesort', function() {                
+		this.$sortCells.bind('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;
@@ -76,7 +76,7 @@ $(function() {
 						return 0;
 					}
 				});
-	
+
 				$.each(sortedMap, function(i, entry) {
 					table.append(entry.row);
 				});
