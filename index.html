@@ -20,6 +20,9 @@
 		padding: 8px 16px;
 		text-align: left;
 	}
+	table.ex-2 {
+		min-width: 100px;
+	}
 	th {
 		background: #f4f4f4;
 		cursor: pointer;
@@ -42,6 +45,10 @@
 
 	th.sorted.descending:after {
 		content: " \2193";
+	}
+
+	.disabled {
+    	opacity: 0.5;
 	}
 	</style>
 </head>
@@ -91,18 +98,21 @@
 	</table>
 </div>
 
-<div class="example ex-2"></div>
+<div class="example ex-2">
+	<div id="sort-msg" style="float: right;" />
+</div>
 
-<script src="//code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="jquery.tablesort.min.js"></script>
 <script type="text/javascript">
 
 	$(function() {
 
-		var table = $('<table></table>');
+		var table = $('<table class="ex-2"></table>');
 		table.append('<thead><tr><th class="number">Number</th></tr></thead>');
 		var tbody = $('<tbody></tbody>');
-		for(var i = 0; i<100; i++) {
+		
+		for(var i = 0; i<6000; i++) {
 			tbody.append('<tr><td>' + Math.floor(Math.random() * 100) + '</td></tr>');
 		}
 		table.append(tbody);
@@ -113,6 +123,20 @@
 		$('thead th.number').data('sortBy', function(th, td, sorter) {
 			return parseInt(td.text(), 10);
 		});
+
+		//Sorting indicator example
+		var thnumber = '';
+        $('table.ex-2').on('tablesort:start', function(event, tablesort) {
+            $('table.ex-2 tbody').addClass("disabled");
+            thnumber = $('.ex-2 th.number').removeClass("sorted asc desc").text();
+            $('.ex-2 th.number').text('Sorting..');
+        });
+
+        $('table.ex-2').on('tablesort:complete', function(event, tablesort) {
+            $('table.ex-2 tbody').removeClass("disabled");
+            $('.ex-2 th.number').text(thnumber);
+        });
+
 
 	});
 </script>
