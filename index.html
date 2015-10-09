@@ -127,8 +127,7 @@
 		//Sorting indicator example
 		$('table.ex-2').on('tablesort:start', function(event, tablesort) {
 			$('table.ex-2 tbody').addClass("disabled");
-			thnumber = $('.ex-2 th.number').removeClass("sorted asc desc").text();
-			$('.ex-2 th.number').text('Sorting..');
+			$('.ex-2 th.number').removeClass("sorted").text('Sorting..');
 		});
 
 		$('table.ex-2').on('tablesort:complete', function(event, tablesort) {
