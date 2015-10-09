@@ -134,6 +134,19 @@ Methods:
 
 	tablesort.destroy();
 
+Default Sorting
+---
+
+It's possible to apply a default sort on page load using the `.sort()` method described above. Simply grab the tablesort instance and call `.sort()`, padding in the `<th>` element you want to sort by.
+
+Assuming your markup is `<table class="sortable">` and the column to sort by default is `<th class="default-sort">` you would write:
+
+```javascript
+$(function() {
+    $('table.sortable').tablesort().data('tablesort').sort($("th.default-sort"));
+});
+```
+
 Settings
 ---
 
