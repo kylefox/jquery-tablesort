@@ -161,6 +161,17 @@ Here are the supported options and their default values:
 You can also change the global debug value which overrides the instance's settings:
 
 	$.tablesort.DEBUG = false;
+	
+Alternatives
+---
+
+I don't use this plugin much any more — most of the fixes & improvements are provided by contributors.
+
+If this plugin isn't meeting your needs and you don't want to submit a pull-request, here are some alternative table-sorting plugins.
+
+* [Stupid jQuery Table Sort](https://github.com/joequery/Stupid-Table-Plugin)
+
+_(Feel free to suggest more by [opening a new issue](https://github.com/kylefox/jquery-tablesort/issues/new))_
 
 Contributing
 ---
