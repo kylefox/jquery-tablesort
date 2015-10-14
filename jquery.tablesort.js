@@ -87,7 +87,7 @@ $(function() {
 				self.$table.trigger('tablesort:complete', [self]);
 				//Try to force a browser redraw
 				self.$table.css("display");
-			}, 10);
+			}, unsortedValues.length > 2000 ? 200 : 10);
 		},
 
 		log: function(msg) {
