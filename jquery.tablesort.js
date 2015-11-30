@@ -5,9 +5,6 @@
 */
 
 (function($) {
-
-	var $ = window.Zepto || window.jQuery;
-
 	$.tablesort = function ($table, settings) {
 		var self = this;
 		this.$table = $table;
@@ -124,4 +121,4 @@
 		});
 	};
 
-})(jQuery);
+})(window.Zepto || window.jQuery);
