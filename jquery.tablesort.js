@@ -4,7 +4,7 @@
 	Version 0.0.6
 */
 
-$(function() {
+(function($) {
 
 	var $ = window.Zepto || window.jQuery;
 
@@ -124,4 +124,4 @@ $(function() {
 		});
 	};
 
-});
+})(jQuery);
