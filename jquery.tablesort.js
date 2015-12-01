@@ -4,10 +4,7 @@
 	Version 0.0.6
 */
 
-$(function() {
-
-	var $ = window.Zepto || window.jQuery;
-
+(function($) {
 	$.tablesort = function ($table, settings) {
 		var self = this;
 		this.$table = $table;
@@ -124,4 +121,4 @@ $(function() {
 		});
 	};
 
-});
+})(window.Zepto || window.jQuery);
