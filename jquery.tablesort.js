@@ -38,7 +38,12 @@
 			});
 			if (unsortedValues.length === 0) return;
 
-			if (direction !== 'asc' && direction !== 'desc')
+			//click on a different column
+			if (this.index !== th.index()) {
+				this.direction = 'asc';
+				this.index = th.index();
+			} 
+			else if (direction !== 'asc' && direction !== 'desc')
 				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
 			else
 				this.direction = direction;
