@@ -1,6 +1,6 @@
 {
   "name": "jquery-tablesort",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A simple, lightweight jQuery plugin for creating sortable tables.",
   "main": "jquery.tablesort.js",
   "scripts": {

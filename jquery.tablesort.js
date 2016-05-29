@@ -1,7 +1,7 @@
 /*
 	A simple, lightweight jQuery plugin for creating sortable tables.
 	https://github.com/kylefox/jquery-tablesort
-	Version 0.0.7
+	Version 0.0.8
 */
 
 (function($) {
