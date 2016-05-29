@@ -10,7 +10,7 @@
 		this.$table = $table;
 		this.$thead = this.$table.find('thead');
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
-		this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)') : this.$table.find('th:not(.no-sort)');
+		this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)').not('table table th') : this.$table.find('th:not(.no-sort)').not('table table th');
 		this.$sortCells.bind('click.tablesort', function() {
 			self.sort($(this));
 		});
@@ -26,8 +26,8 @@
 				self = this,
 				table = this.$table,
 				//body = table.find('tbody').length > 0 ? table.find('tbody') : table,
-				rows = this.$thead.length > 0 ? table.find('tbody tr') : table.find('tr').has('td'),
-				cells = table.find('tr td:nth-of-type(' + (th.index() + 1) + ')'),
+				rows = this.$thead.length > 0 ? table.find('tbody tr').not('table table tr') : table.find('tr').has('td').not('table table tr'),
+				cells = table.find('tr td:nth-of-type(' + (th.index() + 1) + ')').not('table table td'),
 				sortBy = th.data().sortBy,
 				sortedMap = [];
 
