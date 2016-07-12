@@ -11,7 +11,7 @@
 		this.$thead = this.$table.find('thead');
 		this.settings = $.extend({}, $.tablesort.defaults, settings);
 		this.$sortCells = this.$thead.length > 0 ? this.$thead.find('th:not(.no-sort)') : this.$table.find('th:not(.no-sort)');
-		this.$sortCells.bind('click.tablesort', function() {
+		this.$sortCells.on('click.tablesort', function() {
 			self.sort($(this));
 		});
 		this.index = null;
@@ -99,7 +99,7 @@
 		},
 
 		destroy: function() {
-			this.$sortCells.unbind('click.tablesort');
+			this.$sortCells.off('click.tablesort');
 			this.$table.data('tablesort', null);
 			return null;
 		}
