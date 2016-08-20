@@ -102,7 +102,7 @@
 	<div id="sort-msg" style="float: right;" />
 </div>
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="jquery.tablesort.min.js"></script>
 <script type="text/javascript">
 
@@ -112,7 +112,7 @@
 		table.append('<thead><tr><th class="number">Number</th></tr></thead>');
 		var tbody = $('<tbody></tbody>');
 
-		for(var i = 0; i<6000; i++) {
+		for(var i = 0; i<500; i++) {
 			tbody.append('<tr><td>' + Math.floor(Math.random() * 100) + '</td></tr>');
 		}
 		table.append(tbody);
