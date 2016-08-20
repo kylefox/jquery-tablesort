@@ -1,7 +1,9 @@
 A tiny & dead-simple jQuery plugin for sortable tables. Here's a basic [demo](http://dl.dropbox.com/u/780754/tablesort/index.html).
 
-Maintainers Wanted!
+Maintainers Wanted
 ---
+
+![](https://img.shields.io/badge/maintainers-wanted-red.svg)
 
 I don't use this library much anymore and don't have time to maintain it solo.
 
