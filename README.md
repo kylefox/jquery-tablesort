@@ -1,6 +1,13 @@
-A tiny & dead-simple jQuery plugin for sortable tables.
+A tiny & dead-simple jQuery plugin for sortable tables. Here's a basic [demo](http://dl.dropbox.com/u/780754/tablesort/index.html).
 
-Here's a basic [demo](http://dl.dropbox.com/u/780754/tablesort/index.html).
+Maintainers Wanted!
+---
+
+I don't use this library much anymore and don't have time to maintain it solo.
+
+If you are interested in helping me maintain this library, please let me know! [**Read more here &raquo;**](https://github.com/kylefox/jquery-tablesort/issues/32)
+
+Your help would be greatly appreciated!
 
 Install
 ---
