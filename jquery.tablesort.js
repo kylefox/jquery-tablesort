@@ -26,8 +26,9 @@
 				self = this,
 				table = this.$table,
 				rowsContainer = table.find('tbody').length > 0 ? table.find('tbody') : table,
-				rows = this.$thead.length > 0 ? table.find('tbody tr') : table.find('tr').has('td'),
-				cells = rows.find(':nth-child(' + (th.index() + 1) + ')'),
+				//rows = this.$thead.length > 0 ? table.find('tbody tr') : table.find('tr').has('td'),
+				rows = rowsContainer.find('tr').has('td, th'),
+				cells = rows.find(':nth-child(' + (th.index() + 1) + ')').filter('td, th'),
 				sortBy = th.data().sortBy,
 				sortedMap = [];
 
