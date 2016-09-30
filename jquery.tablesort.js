@@ -70,13 +70,7 @@
 				}
 
 				sortedMap.sort(function(a, b) {
-					if (a.value > b.value) {
-						return 1 * direction;
-					} else if (a.value < b.value) {
-						return -1 * direction;
-					} else {
-						return 0;
-					}
+					return self.settings.compare(a.value, b.value) * direction;
 				});
 
 				$.each(sortedMap, function(i, entry) {
@@ -111,7 +105,16 @@
 	$.tablesort.defaults = {
 		debug: $.tablesort.DEBUG,
 		asc: 'sorted ascending',
-		desc: 'sorted descending'
+		desc: 'sorted descending',
+		compare: function(a, b) {
+			if (a > b) {
+				return 1;
+			} else if (a < b) {
+				return -1;
+			} else {
+				return 0;
+			}
+		}
 	};
 
 	$.fn.tablesort = function(settings) {
