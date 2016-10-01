@@ -106,6 +106,24 @@ Sort functions are passed three parameters:
 * the `<td>` for which the current sort value is required
 * the `tablesort` instance
 
+Custom comparison functions
+---
+
+If you need to implement more advanced sorting logic, you can specify a comparison function with the `compare` setting. The function works the same way as the `compareFunction` accepted by [`Array.prototype.sort()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort):
+
+```javascript
+function compare(a, b) {
+  if (a < b) {
+    return -1;		// `a` is less than `b` by some ordering criterion
+  }
+  if (a > b) {
+    return 1;			// `a` is greater than `b` by the ordering criterion
+  }
+
+  return 0;				// `a` is equal to `b`
+}
+```
+
 Events
 ---
 
@@ -167,10 +185,27 @@ Here are the supported options and their default values:
 		desc: 'sorted descending'
 	};
 
+```javascript
+$.tablesort.defaults = {
+	debug: $.tablesort.DEBUG,		// Outputs some basic debug info when true.
+	asc: 'sorted ascending',		// CSS classes added to `<th>` elements on sort.
+	desc: 'sorted descending',
+	compare: function(a, b) {		// Function used to compare values when sorting.
+		if (a > b) {
+			return 1;
+		} else if (a < b) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
+};
+```
+
 You can also change the global debug value which overrides the instance's settings:
 
 	$.tablesort.DEBUG = false;
-	
+
 Alternatives
 ---
 
