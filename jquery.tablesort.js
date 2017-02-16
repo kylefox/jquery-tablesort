@@ -39,7 +39,7 @@
 			if (unsortedValues.length === 0) return;
 
 			//click on a different column
-			if (this.index !== th.index()) {
+			if (this.index !== null && this.index !== th.index()) {
 				this.direction = 'asc';
 				this.index = th.index();
 			}
