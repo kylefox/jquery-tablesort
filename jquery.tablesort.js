@@ -42,6 +42,7 @@
 			if (this.index !== th.index()) {
 				this.direction = 'asc';
 				this.index = th.index();
+				this.$th = th
 			}
 			else if (direction !== 'asc' && direction !== 'desc')
 				this.direction = this.direction === 'asc' ? 'desc' : 'asc';
